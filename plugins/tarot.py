@@ -94,12 +94,12 @@ def tarotChoice():
     ints = random.randint(0, 1)
     if ints == 0:
         tarots = random.choice(tarot)
-        txt = tarots[0] + '\n' + '正位' + '\n' + tarots[1]
+        txt = tarots[0] + '\n正位\n' + tarots[1]
         img = 'data/pictures/tarot/TarotImages/' + tarots[3]
         return txt, img
     if ints == 1:
         tarots = random.choice(tarot)
-        txt = tarots[0] + '\n' + '逆位' + '\n' + tarots[2]
+        txt = tarots[0] + '\n逆位\n' + tarots[2]
         img1 = 'data/pictures/tarot/TarotSide/' + tarots[3]
         if os.path.exists(img1):
             return txt, img1
