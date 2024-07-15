@@ -3,6 +3,7 @@ import asyncio
 import datetime
 import os
 import random
+import re
 import shutil
 import threading
 from asyncio import sleep
@@ -13,7 +14,6 @@ from mirai import Voice, Startup
 from mirai.models import NudgeEvent
 
 from plugins.aiReplyCore import modelReply, clearAllPrompts, tstt, clearsinglePrompt
-from plugins.wReply.wontRep import wontrep
 
 
 # 1
@@ -282,6 +282,28 @@ def main(bot, master, logger):
             logger.info('已读取信任用户' + str(len(trustUser)) + '个')
 
     # 群内chatGLM回复
+    def wontrep(noeRes1, text: str, logger):
+        text: str = text
+        for i in ['壁纸', '涩图', '色图', '图', 'r18']:
+            text = text.replace(i, '')
+        for i in noeRes1.get("noRes"):
+            if text == i:
+                logger.warning(f"与屏蔽词 {i} 匹配，不回复")
+                return False
+        for i in noeRes1.get("startswith"):
+            if str(text).startswith(i):
+                logger.warning(f"与屏蔽词 {i} 匹配，不回复")
+                return False
+        for i in noeRes1.get("endswith"):
+            if str(text).endswith(i):
+                logger.warning(f"与屏蔽词 {i} 匹配，不回复")
+                return False
+        for i in noeRes1.get("Regular"):
+            if re.search(i, text):
+                logger.warning(f"与表达式 {i} 匹配，不回复")
+                return False
+        return True
+
     @bot.on(GroupMessage)
     async def atReply(event: GroupMessage):
         global trustUser, chatGLMData, chatGLMCharacters, userdict, coziData, trustG
