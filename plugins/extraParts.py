@@ -15,9 +15,7 @@ def get_cp_mesg(gong, shou):
 
 
 async def emojimix(emoji1, emoji2):
-    if is_emoji(emoji1) and is_emoji(emoji2):
-        pass
-    else:
+    if not (is_emoji(emoji1) and is_emoji(emoji2)):
         print("not emoji")
         return None
     url = f"http://promptpan.com/mix/{emoji1}/{emoji2}"
