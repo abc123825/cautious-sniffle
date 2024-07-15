@@ -75,9 +75,9 @@ async def cccdddm(musicname):
 
 
 async def musicDown(id, name):
-    url = "http://music.163.com/song/media/outer/url?id=" + str(id) + ".mp3"
+    url = f"http://music.163.com/song/media/outer/url?id={id}.mp3"
     waf = requests.get(url).content
-    path = 'data/music/musicCache/' + name + '.mp3'
+    path = f'data/music/musicCache/{name}.mp3'
 
     # path=await convert_to_silk(path)
 

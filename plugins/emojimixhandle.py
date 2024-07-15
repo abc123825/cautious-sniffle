@@ -90,7 +90,7 @@ async def emojimix_handle(a, b):
                         result = mix_reverse(a, b)
                         return result
         else:
-            if not a in emoji_list:
+            if a not in emoji_list:
                 return 'a'
             else:
                 return 'b'
