@@ -22,20 +22,18 @@ def main(bot, api_key, proxy, logger):
         result1 = yaml.load(f.read(), Loader=yaml.FullLoader)
     selfsensor = result1.get("moderate").get("selfsensor")
     selfthreshold = result1.get("moderate").get("selfthreshold")
-    global dataGet
+
     dataGet = {}
-    global userSearch
 
     @bot.on(GroupMessage)
     async def startYourSearch(event: GroupMessage):
-        global dataGet
+
         if str(event.message_chain) == "搜图":
             await bot.send(event, "请发送要搜索的图片")
             dataGet[event.sender.id] = []
 
     @bot.on(GroupMessage)
     async def imgSearcher(event: GroupMessage):
-        global dataGet
         if ("搜图" in str(event.message_chain) or event.sender.id in dataGet) and event.message_chain.count(Image):
             logger.info("接收来自群：" + str(event.group.id) + " 用户：" + str(event.sender.id) + " 的搜图指令")
             dataGet[event.sender.id] = []

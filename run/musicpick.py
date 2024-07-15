@@ -13,7 +13,6 @@ from plugins.cloudMusic import newCloudMusicDown, cccdddm
 
 def main(bot, logger):
     logger.warning("语音点歌 loaded")
-    global musicTask
     musicTask = {}
     with open('config/controller.yaml', 'r', encoding='utf-8') as f:
         controller = yaml.load(f.read(), Loader=yaml.FullLoader)
@@ -42,7 +41,6 @@ def main(bot, logger):
 
     @bot.on(GroupMessage)
     async def selectMusic(event: GroupMessage):
-        global musicTask
         if str(event.message_chain).startswith("点歌 "):
             musicName = str(event.message_chain).replace("点歌 ", "")
             logger.info("点歌：" + musicName)
@@ -74,7 +72,6 @@ def main(bot, logger):
 
     @bot.on(GroupMessage)
     async def select11Music(event: GroupMessage):
-        global musicTask
         if event.sender.id in musicTask:
             try:
                 if musicToVoice:
