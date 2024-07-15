@@ -148,9 +148,7 @@ def main(bot, master, logger):
                 if text == saa or text.startswith(saa):
                     logger.warning("与屏蔽词匹配，不回复")
                     return
-        if privateGlmReply or (trustglmReply and str(event.sender.id) in trustUser):
-            pass
-        else:
+        if not (privateGlmReply or (trustglmReply and str(event.sender.id) in trustUser)):
             return
         text = str(event.message_chain)
         if event.sender.id in chatGLMCharacters:
