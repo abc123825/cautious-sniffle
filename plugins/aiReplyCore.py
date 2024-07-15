@@ -8,7 +8,7 @@ import yaml
 from mirai import logger
 
 from plugins.RandomStr import random_str
-from plugins.ReplyModels import gptOfficial, gptUnofficial, kimi, qingyan, lingyi, stepAI, qwen, gptvvvv, grop, \
+from plugins.ReplyModels import gptOfficial, kimi, qingyan, lingyi, stepAI, qwen, gptvvvv, grop, \
     gpt4hahaha, anotherGPT35, chatGLM, relolimigpt2, xinghuo, Gemma, binggpt4
 from plugins.cozeBot import cozeBotRep
 from plugins.googleGemini import geminirep
@@ -52,7 +52,7 @@ voiceRate = result.get("chatGLM").get("voiceRate")
 speaker = result.get("语音功能设置").get("speaker")
 withText = result.get("chatGLM").get("withText")
 newLoop = asyncio.new_event_loop()
-global chatGLMData
+
 with open('data/chatGLMData.yaml', 'r', encoding='utf-8') as f:
     cha = yaml.load(f.read(), Loader=yaml.FullLoader)
 
@@ -97,7 +97,6 @@ async def loop_run_in_executor(executor, func, *args):
 
 # 运行异步函数
 async def modelReply(senderName, senderId, text, modelHere=modelDefault, trustUser=None, checkIfRepFirstTime=False):
-    global chatGLMData
     logger.info(modelHere)
     try:
         if type(allcharacters.get(modelHere)) == dict:
@@ -260,7 +259,6 @@ async def modelReply(senderName, senderId, text, modelHere=modelDefault, trustUs
 
 
 async def clearsinglePrompt(senderid):
-    global chatGLMData
     try:
         chatGLMData.pop(senderid)
         # 写入文件
@@ -273,14 +271,9 @@ async def clearsinglePrompt(senderid):
 
 
 async def clearAllPrompts():
-    global chatGLMData
     try:
-        chatGLMData = {"f": "hhh"}
-        # chatGLMData.pop(event.sender.id)
-        # 写入文件
         with open('data/chatGLMData.yaml', 'w', encoding="utf-8") as file:
-            yaml.dump(chatGLMData, file, allow_unicode=True)
-        #print(chatGLMData)
+            yaml.dump({"f": "hhh"}, file, allow_unicode=True)
         return "已清除所有用户的prompt"
     except:
         return "清理缓存出错，无本地对话记录"
