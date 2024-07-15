@@ -15,9 +15,7 @@ def main(bot, master, botName, logger):
     with open('data/biliMonitor.yaml', 'r', encoding='utf-8') as file:
         live = yaml.load(file, Loader=yaml.FullLoader)
     print("live")
-    global temp
     temp = {}
-    global lists
     lists = {}
     for i in live:
         lists[i] = 0
@@ -92,7 +90,6 @@ def main(bot, master, botName, logger):
     @bot.on(GroupMessage)
     async def bilimON(event: GroupMessage):
         global live
-        global lists
         try:
             if event.message_chain.count(App) and temp.get(event.group.id).get("step") == 1:
                 con = event.message_chain.get(App)[0].content
