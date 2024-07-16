@@ -14,7 +14,6 @@ async def translate(text, mode="ZH_CN2JA"):
         URL = f"https://api.pearktrue.cn/api/translate/?text={text}&type={mode}"
         async with httpx.AsyncClient(timeout=20) as client:
             r = await client.get(URL)
-            #print(r.json()["data"]["translate"])
             return r.json()["data"]["translate"]
     except:
         print("文本翻译接口1失效")

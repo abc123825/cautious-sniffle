@@ -1,4 +1,4 @@
-# 此代码示例演示如何将 Markdoen 文件转换为 PDF 文档。
+# 此代码示例演示如何将 Markdown 文件转换为 PDF 文档。
 import asyncio
 import os.path
 from io import BytesIO
