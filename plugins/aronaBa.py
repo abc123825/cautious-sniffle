@@ -9,7 +9,7 @@ from PIL import Image
 
 
 async def stageStrategy(aim):
-    url = "https://arona.diyigemt.com/api/v2/image?name=" + aim
+    url = f"https://arona.diyigemt.com/api/v2/image?name={aim}"
     path = "data/blueArchive/arona/" + aim + ".png"
     with open("data/blueArchive/hash.yaml", 'r', encoding='utf-8') as f:
         result = yaml.load(f.read(), Loader=yaml.FullLoader)
