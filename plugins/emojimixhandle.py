@@ -33,7 +33,6 @@ async def emojimix_handle(a, b):
     try:
         if not os.path.exists(local_path):
             os.makedirs(local_path)
-        url = 'https://www.gstatic.com/android/keyboard/emojikitchen/'
         a = str(hex(ord(a))).lstrip('0x')
         b = str(hex(ord(b))).lstrip('0x')
         print(a)
@@ -90,7 +89,7 @@ async def emojimix_handle(a, b):
                         result = mix_reverse(a, b)
                         return result
         else:
-            if not a in emoji_list:
+            if a not in emoji_list:
                 return 'a'
             else:
                 return 'b'
@@ -103,7 +102,6 @@ def mix_reverse(a, b):
     try:
         if not os.path.exists(local_path):
             os.makedirs(local_path)
-        url = 'https://www.gstatic.com/android/keyboard/emojikitchen/'
         print(a)
         print(b)
         if a in emoji_list and b in emoji_list:

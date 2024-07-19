@@ -14,10 +14,8 @@ from plugins.webScreenShoot import screenshot_to_pdf_and_png
 
 def main(bot, logger):
     logger.info("blueArchive")
-    global punishing
     with open('data/Punishing.yaml', 'r', encoding='utf-8') as f:
         punishing = yaml.load(f.read(), Loader=yaml.FullLoader)
-    global newResult
     with open('data/blueArchive/character.yaml', 'r', encoding='utf-8') as f:
         newResult = yaml.load(f.read(), Loader=yaml.FullLoader)
 
@@ -35,7 +33,6 @@ def main(bot, logger):
 
     @bot.on(GroupMessage)
     async def CharacterQuery(event: GroupMessage):
-        global punishing
         if "战双查询" in str(event.message_chain):
             aimCharacter = str(event.message_chain).split("战双查询")[1]
             logger.info("查询战双角色:" + aimCharacter)

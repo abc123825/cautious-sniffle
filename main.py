@@ -129,7 +129,7 @@ if __name__ == '__main__':
     async def clearCache(event: Startup):
 
         logger.info("执行清理缓存操作")
-        aimdir=["data/pictures/avatars","data/pictures/cache","data/pictures/new_sign_Image","data/voices"]
+        aimdir = ["data/pictures/avatars", "data/pictures/cache", "data/pictures/new_sign_Image", "data/voices"]
         for ib in aimdir:
             ls1 = os.listdir(ib)
             for i in ls1:
@@ -178,6 +178,7 @@ if __name__ == '__main__':
         await bot.send_friend_message(master, time1 + '\n已读取有记录用户:' + str(len(userCount)) + '个')
         await bot.send_friend_message(master, time1 + '\n功能已加载完毕，欢迎使用')
         await bot.send_friend_message(master, Image(path="data/fonts/master.png"))
+
 
     logger.info("当前语音合成模式：" + voicegg)
 

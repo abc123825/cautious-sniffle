@@ -13,7 +13,6 @@ def main(bot, master, logger, berturl, proxy):
     normal_Reply = result.get("nudgedReply")
     special_Reply = result.get("BeatNudge")
     special_Reply1 = result.get("BeatNudge1")
-    global transLateData
     with open('data/autoReply/transLateData.yaml', 'r', encoding='utf-8') as file:
         transLateData = yaml.load(file, Loader=yaml.FullLoader)
     prob = result.get("prob")

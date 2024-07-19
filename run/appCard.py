@@ -1,12 +1,17 @@
 # -*- coding: utf-8 -*-
-
+import requests
 from mirai import GroupMessage
 from mirai import Image
 from mirai.models import App
 
-from plugins.arksign import arkSign
-
 u = []
+
+
+async def arkSign(url):
+    url = f"https://api.lolimi.cn/API/ark/a2.php?img={url}"
+
+    r = requests.get(url, timeout=20)
+    return str(r.text)
 
 
 def main(bot, logger):

@@ -30,9 +30,9 @@ def pic():
 
     ranpath = random_str()
 
-    with open("data/pictures/wallpaper/" + ranpath + ".png", mode="wb") as f:
+    with open(f"data/pictures/wallpaper/{ranpath}.png", mode="wb") as f:
         f.write(r)  # 图片内容写入文件
-    return "data/pictures/wallpaper/" + ranpath + ".png"
+    return f"data/pictures/wallpaper/{ranpath}.png"
 
 
 import asyncio

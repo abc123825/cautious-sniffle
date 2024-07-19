@@ -1,4 +1,4 @@
-# 此代码示例演示如何将 Markdoen 文件转换为 PDF 文档。
+# 此代码示例演示如何将 Markdown 文件转换为 PDF 文档。
 import asyncio
 import os.path
 from io import BytesIO
@@ -9,7 +9,7 @@ from PIL import Image
 
 
 async def stageStrategy(aim):
-    url = "https://arona.diyigemt.com/api/v2/image?name=" + aim
+    url = f"https://arona.diyigemt.com/api/v2/image?name={aim}"
     path = "data/blueArchive/arona/" + aim + ".png"
     with open("data/blueArchive/hash.yaml", 'r', encoding='utf-8') as f:
         result = yaml.load(f.read(), Loader=yaml.FullLoader)

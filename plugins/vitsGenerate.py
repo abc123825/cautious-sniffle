@@ -31,7 +31,7 @@ async def superVG(data, mode, urls="", langmode="<zh>"):
 
     # 去除括号及其中的内容
     cleaned_text = pattern.sub('', data.get("text"))
-    data["text"] = cleaned_text.replace("·", "").replace("~", "").replace("-","")
+    data["text"] = cleaned_text.replace("·", "").replace("~", "").replace("-", "")
     if langmode == "<zh>":
         speaker = data.get("speaker")
         if "_" in str(speaker):
@@ -216,8 +216,7 @@ async def superVG(data, mode, urls="", langmode="<zh>"):
         p = "data/voices/" + random_str() + '.wav'
         async with httpx.AsyncClient(timeout=200, headers=headers) as client:
             r = await client.post(url, json=data)
-            newurl = newurp + \
-                     r.json().get("data")[1].get("name")
+            newurl = newurp + r.json().get("data")[1].get("name")
             async with httpx.AsyncClient(timeout=200, headers=headers) as client:
                 r = await client.get(newurl)
                 with open(p, "wb") as f:

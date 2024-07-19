@@ -13,7 +13,9 @@ picData = json.loads(js)
 def find_keys_containing_value(json_data, search_value):
     result = []
 
-    def search_in_dict(d, current_path=[]):
+    def search_in_dict(d, current_path: list = None):
+        if current_path is None:
+            current_path = []
         if isinstance(d, dict):
             for key, value in d.items():
                 search_in_dict(value, current_path + [key])

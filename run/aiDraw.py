@@ -11,7 +11,7 @@ from plugins.RandomStr import random_str
 from plugins.setuModerate import fileImgModerate
 from plugins.aiDrawer import SdDraw, draw2, airedraw, draw1, draw3, tiktokredraw, draw5, draw4, draw6, modelScopeDrawer
 
-
+redraw = {}
 def main(bot, logger):
     logger.info("ai绘画 启用")
     with open('config/api.yaml', 'r', encoding='utf-8') as f:
@@ -28,8 +28,7 @@ def main(bot, logger):
     aiDrawController = controller.get("ai绘画")
     negative_prompt = aiDrawController.get("negative_prompt")
     positive_prompt = aiDrawController.get("positive_prompt")
-    global redraw
-    redraw = {}
+
 
     @bot.on(GroupMessage)
     async def msDrawer(event: GroupMessage):
@@ -227,14 +226,12 @@ def main(bot, logger):
 
     @bot.on(GroupMessage)
     async def rededd(event: GroupMessage):
-        global redraw
         if str(event.message_chain).startswith("以图生图 ") and aiDrawController.get("ai重绘"):
             await bot.send(event, "请发送图片，bot随后将开始绘制")
             redraw[event.sender.id] = str(event.message_chain).replace("以图生图 ", "")
 
     @bot.on(GroupMessage)
     async def redrawStart(event: GroupMessage):
-        global redraw
         if event.message_chain.count(Image) and event.sender.id in redraw:
             prompt = redraw.get(event.sender.id)
             lst_img = event.message_chain.get(Image)

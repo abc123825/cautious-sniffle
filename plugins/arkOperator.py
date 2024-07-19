@@ -236,4 +236,4 @@ def arkOperator():
 
 
 if __name__ == '__main__':
-    arkOperator()
+    print(arkOperator())
