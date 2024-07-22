@@ -13,7 +13,7 @@
 - [arona api](https://doc.arona.diyigemt.com/)  提供blueArchive数据支持
 - [star-rail-atlas](https://gitee.com/Nwflower/star-rail-atlas)  数据支持
 - [Yiri-mirai](https://github.com/YiriMiraiProject/YiriMirai)  很好的python sdk
-- 如果遇到使用问题，请在QQ群623265372反馈
+- 如果遇到使用问题，请在QQ3072610278反馈
 
 
 <div align="center">
